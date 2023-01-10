@@ -36,6 +36,11 @@ syn match rhelpKeyword '\(\w\|[.]\)\+' contained
 syn match rhelpPunct '\([,]\|[:]\)' contained
 
 """ highlight colors
+" hi GruvboxOrange guifg='#fe8019' ctermfg=208 guibg='NONE' ctermbg='NONE'
+" hi GruvboxRed guifg='#fb4934' ctermfg=167 guibg='NONE' ctermbg='NONE'
+" hi GruvboxBlue guifg='#83a598' ctermfg=109 guibg='NONE' ctermbg='NONE'
+" hi GruvboxOrangeBold guifg='#fe8019' ctermfg=208 guibg='NONE' ctermbg='NONE' gui='bold' cterm='bold'
+" hi GruvboxBlueBold guifg='#83a598' ctermfg=109 guibg='NONE' ctermbg='NONE' gui='bold' cterm='bold'
 " header
 hi def link rhelpHeadFunction GruvboxOrangeBold
 hi def link rhelpHeadPackage GruvboxOrangeBold
