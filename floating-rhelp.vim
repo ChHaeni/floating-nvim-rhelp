@@ -47,7 +47,8 @@ function! Rhelp(text, ...) abort
         " set filetype
         call nvim_buf_set_option(buf, 'filetype', 'rhelp_pages')
         " add mapping to follow 'See Also'
-        call nvim_buf_set_keymap(buf, 'n', '<cr>', 'yiw :call Rhelp(@")<cr>', {'silent': v:true, 'nowait': v:true, 'noremap': v:true})
+        call nvim_buf_set_keymap(buf, 'n', '<cr>', 'yiw :close <bar> call Rhelp(@")<cr>', {'silent': v:true, 'nowait': v:true, 'noremap': v:true})
+        call nvim_buf_set_keymap(buf, 'n', 'K', 'yiw :close <bar> call Rhelp(@")<cr>', {'silent': v:true, 'nowait': v:true, 'noremap': v:true})
         " add mapping to get back to 'overview'
         call nvim_buf_set_keymap(buf, 'n', '<c-^>', ':close <bar> call Rhelp("' .. a:text .. '")<cr>', {'silent': v:true, 'nowait': v:true, 'noremap': v:true})
     endif
