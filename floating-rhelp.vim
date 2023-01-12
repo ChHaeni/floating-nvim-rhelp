@@ -72,6 +72,8 @@ function! Rhelp(text, ...) abort
                 \ }
     " create window
     let win = nvim_open_win(buf, 1, opts)
+    " redefine keyword (e.g. for yiw)
+    call win_execute(win, 'setlocal iskeyword=@,48-57,_,.')
     " set modifiable off
     call nvim_buf_set_option(0, 'modifiable', v:false)
 endfunction
