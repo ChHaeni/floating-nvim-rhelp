@@ -51,3 +51,7 @@ hi def link rhelpSectTitle GruvboxOrangeBold
 hi def link rhelpCode GruvboxBlue
 hi def link rhelpKeyword GruvboxRed
 hi def link rhelpPunct GruvboxOrange
+		" :highlight Normal ctermfg=grey ctermbg=darkblue
+" background
+hi RhelpNormal ctermfg=223 ctermbg=235 guifg=#ebdbb2 guibg=#282828
+
