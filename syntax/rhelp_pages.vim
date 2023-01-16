@@ -18,15 +18,15 @@ syn match rhelpHeadPackage 'package:\zs\w\(\w\|[.]\)\+' contained
 syn match rhelpHeadDocu 'R Documentation$' contained
 
 """ block section (Description, etc.)
-syn region rhelpSection start="^\([A-Z]\w\+\s\?\)\+:\s*$" end="^\ze\([A-Z]\w\+\s\?\)\+:\s*$" transparent contains=rhelpSectTitle,rhelpCode
-syn match rhelpSectTitle '^\([A-Z]\w\+\s\?\)\+:\s*$' contained
-syn region rhelpCode start="[\u2018]" end="[\u2019]"
+syn region rhelpSection start="^[A-Z]\(\S\+\s\?\)\+:\s*$" end="^\ze[A-Z]\(\S\+\s\?\)\+:\s*$" transparent contains=rhelpSectTitle,rhelpCode
+syn match rhelpSectTitle '^[A-Z]\(\S\+\s\?\)\+:\s*$' contained
+syn region rhelpCode start="[\u2018]\zs" end="\ze[\u2019]"
 
 """ block Usage:
-syn region rhelpUsage start='^Usage:\s*$' end='^\zeArguments:\s*$' transparent contains=rhelpSectTitle,@R
+syn region rhelpUsage start='^Usage:\s*$' end='^\ze\(Arguments\|Value\):\s*$' transparent contains=rhelpSectTitle,@R
 
 """ block Examples:
-syn region rhelpUsage start='^Examples:\s*$' end='^\zeArguments:\s*$' transparent keepend contains=rhelpSectTitle,@R
+syn region rhelpExamples start='^Examples:\s*$' end='^\zeArguments:\s*$' transparent keepend contains=rhelpSectTitle,@R
 
 """ block Arguments: and Value:
 " TODO: end -> include empty line before next argument!
