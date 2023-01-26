@@ -12,12 +12,19 @@ function! Rhelp(text, ...) abort
     let height = ui.height / 4 * 3
 
     " call R help
+    let r_function = a:text
+    let r_packages = 'dir(.libPaths())'
     if a:0 > 0
-        let packages = '\"' .. a:1 .. '\"'
+        let r_packages = '\"' .. a:1 .. '\"'
     else
-        let packages = 'dir(.libPaths())'
+        let tsplit = split(a:text, "::")
+        if len(tsplit) > 1
+            " value passing -> order of assignment matters
+            let r_function = tsplit[1]
+            let r_packages = tsplit[0]
+        endif
     endif
-    let cmd = 'Rscript -e "help(\"' .. a:text .. '\", ' .. packages .. ')" | sed "s/_\x08//g"'
+    let cmd = 'Rscript -e "help(\"' .. r_function .. '\", ' .. r_packages .. ')" | sed "s/_\x08//g"'
     let helptext = systemlist(cmd)
 
     " check if multiple matches -> first line 'Help on topic ...'
@@ -38,7 +45,7 @@ function! Rhelp(text, ...) abort
         " add mapping to call <cr> with help & package
         call nvim_buf_set_keymap(buf, 'n', '<cr>', ':call GetPackage()<cr>', {'silent': v:true, 'nowait': v:true, 'noremap': v:true})
         " set buffer variable
-        call nvim_buf_set_var(buf, 'rhelp', a:text)
+        call nvim_buf_set_var(buf, 'rhelp', r_function)
         " set filetype
         call nvim_buf_set_option(buf, 'filetype', 'rhelp_select')
     else
