@@ -23,7 +23,7 @@ syn match rhelpSectTitle '^[A-Z]\(\S\+\s\?\)\+:\s*$' contained
 syn region rhelpCode start="[\u2018]\zs" end="\ze[\u2019]"
 
 """ block Usage:
-syn region rhelpUsage start='^Usage:\s*$' end='^\ze\(Arguments\|Value\):\s*$' transparent contains=rhelpSectTitle,@R
+syn region rhelpUsage start='^Usage:\s*$' end='^\ze[A-Z]\(\S\+\s\?\)\+:\s*$' transparent contains=rhelpSectTitle,@R
 
 """ block Examples:
 syn region rhelpExamples start='^Examples:\s*$' end='^\zeArguments:\s*$' transparent keepend contains=rhelpSectTitle,@R
