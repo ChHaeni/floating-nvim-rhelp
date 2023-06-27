@@ -31,7 +31,7 @@ syn region rhelpExamples start='^Examples:\s*$' end='^\zeArguments:\s*$' transpa
 """ block Arguments: and Value:
 " TODO: end -> include empty line before next argument!
 syn region rhelpArgs start='^\(Arguments\|Value\):\s*$' end="^\ze\([A-Z]\w\+\s\?\)\+:\s*$" transparent contains=rhelpSectTitle,rhelpKeywords,rhelpCode
-syn match rhelpKeywords '^\s*\(\([,]\s\)\?\(\w\|[.]\)\)\+:\ze\s\+\S' transparent contained contains=rhelpKeyword,rhelpPunct
+syn match rhelpKeywords '^\s*\(\([,]\s\?\)\?\(\w\|[.]\)\)\+:\ze\s\+\S' transparent contained contains=rhelpKeyword,rhelpPunct
 syn match rhelpKeyword '\(\w\|[.]\)\+' contained
 syn match rhelpPunct '\([,]\|[:]\)' contained
 
